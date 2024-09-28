@@ -1,0 +1,35 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: configserver
+  profiles:
+    # active: native
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: true
+          force-pull: true
+          default-label: main
+          timeout: 5
+          uri: "https://github.com/hitesh13x/config.git"
+        # native:
+        #   search-locations: "classpath:/config"
+          # search-locations: "file:///C:/Hitesh/Projects/sb-microservices/configFolder"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+encrypt:
+  key: "4EECDBE09E3D49D16F74AC7873631656"
